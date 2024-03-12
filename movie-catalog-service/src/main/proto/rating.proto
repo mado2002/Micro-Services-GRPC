@@ -1,0 +1,22 @@
+syntax = "proto3";
+package com.example.grpc;
+option java_package = "com.example.grpc";
+option java_multiple_files = true;
+message Movie {
+  string movieId = 1;
+  string name = 2;
+  string description = 3;
+  // Add more fields as needed
+}
+
+message TopMoviesRequest {
+  int32 count = 1;
+}
+
+message TopMoviesResponse {
+  repeated Movie top_movies = 1;
+}
+service MovieService {
+  rpc GetTopMovies(TopMoviesRequest) returns (TopMoviesResponse) {}
+}
+
